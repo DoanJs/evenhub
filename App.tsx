@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import AuthNavigator from "./src/navigators/AuthNavigator";
+import { SplashScreen } from "./src/screens";
+import { NavigationContainer } from "@react-navigation/native";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import MainNavigator from "./src/navigators/MainNavigator";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+const App = () => {
+  const [isShowSplash, setIsShowSplash] = useState(true);
+  const [accessToken, setAccessToken] = useState("");
+  const { getItem, setItem } = useAsyncStorage("assetToken");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsShowSplash(false);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  const checkLogin = async () => {
+    const token = await getItem();
+    token && setAccessToken(token);
+  };
+
+  return isShowSplash ? (
+    <SplashScreen />
+  ) : (
+    <NavigationContainer>
+      {accessToken ? <MainNavigator /> : <AuthNavigator />}
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
