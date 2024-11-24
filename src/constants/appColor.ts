@@ -4,4 +4,6 @@ export const appColor = {
     text: '#120D26',
     gray: '#807A7A',
     gray2: '#E4DFDF',
+    dot: '#7887FF',
+    skip:'#ABB4FF'
 }
