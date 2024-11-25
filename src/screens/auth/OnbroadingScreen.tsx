@@ -30,7 +30,11 @@ const OnbroadingScreen = () => {
       </Swiper>
       <View style={styles.skipNext}>
         <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
-          <Text style={{ color: appColor.skip }}>Skip</Text>
+          <TextComponent
+            text="Skip"
+            color={appColor.skip}
+            font={fontFamilies.medium}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
