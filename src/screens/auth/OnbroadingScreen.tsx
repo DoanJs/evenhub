@@ -8,6 +8,8 @@ import onbroading_3 from "../../assets/images/onboarding-3.png";
 import { appColor } from "../../constants/appColor";
 import { appInfo } from "../../constants/appInfos";
 import { globalStyles } from "../../styles/gloabalStyles";
+import { TextComponent } from "../../components";
+import { fontFamilies } from "../../constants/fontFamilies";
 
 const OnbroadingScreen = () => {
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
@@ -35,7 +37,11 @@ const OnbroadingScreen = () => {
             index < 2 ? setIndex(index + 1) : navigation.navigate("LoginScreen")
           }
         >
-          <Text style={{ color: appColor.white }}>Next</Text>
+          <TextComponent
+            text="Next"
+            color={appColor.white}
+            font={fontFamilies.medium}
+          />
         </TouchableOpacity>
       </View>
     </View>

@@ -1,3 +1,4 @@
+import TextComponent from "./TextComponent";
 import SpaceComponent from "./SpaceComponent";
 
-export { SpaceComponent };
+export { SpaceComponent, TextComponent };

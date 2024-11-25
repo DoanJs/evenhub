@@ -6,6 +6,7 @@ const LoginScreen = () => {
   return (
     <View style={{marginTop: 40}}>
       <Text>LoginScreen</Text>
+      <Text style={{fontFamily: 'AirbnbCereal_W_Bd'}}>LoginScreen</Text>
       <Button
         title="Login"
         onPress={async () =>
