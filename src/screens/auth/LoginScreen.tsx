@@ -70,11 +70,15 @@ const LoginScreen = () => {
             />
             <TextComponent text="Remember me!" color={appColor.text} />
           </RowComponent>
-          <ButtonComponent text="Forgot Password?" type="link" />
+          <ButtonComponent
+            text="Forgot Password?"
+            type="link"
+            onPress={() => navigation.navigate("ForgotPassword")}
+          />
         </RowComponent>
       </SectionComponent>
       <SpaceComponent height={16} />
-      <SectionComponent>
+      <SectionComponent styles={{ alignItems: "center" }}>
         <ButtonComponent type="primary" text="SIGN IN" />
       </SectionComponent>
 

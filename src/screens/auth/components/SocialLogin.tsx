@@ -13,7 +13,7 @@ import FacebookIcon from "../../../assets/images/facebook.png";
 
 const SocialLogin = () => {
   return (
-    <SectionComponent>
+    <SectionComponent styles={{alignItems:"center"}}>
       <TextComponent
         text="OR"
         color={appColor.gray3}
