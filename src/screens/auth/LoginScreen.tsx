@@ -22,6 +22,19 @@ const LoginScreen = () => {
   const [isRemember, setIsRemember] = useState(true);
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
+  const handleLogin = async () => {
+    const api = `http://192.168.0.104:3001/hello`
+
+    try {
+      const res = await fetch(api, {
+        method: 'GET'
+      })
+      console.log(res.body)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <ContainerComponent isImageBackground isScroll>
       <SectionComponent
@@ -85,6 +98,7 @@ const LoginScreen = () => {
           text="SIGN IN"
           iconFlex="right"
           icon={<Image source={arrownRight} height={20} />}
+          onPress={handleLogin}
         />
       </SectionComponent>
 

@@ -21,7 +21,8 @@ const ForgotPassword = () => {
     <ContainerComponent back isImageBackground>
       <SectionComponent>
         <TextComponent text="Resset Password" title />
-        <TextComponent text="Please enter your email address to request a password reset" />
+        <TextComponent 
+          styles={{ width: "60%" }} text="Please enter your email address to request a password reset" />
         <SpaceComponent height={24} />
         <InputComponent
           placeholder="abc@email.com"

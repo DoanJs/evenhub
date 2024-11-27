@@ -1,12 +1,10 @@
 import React, { ReactNode, useState } from "react";
 import {
   KeyboardTypeOptions,
-  StyleProp,
   StyleSheet,
   TextInput,
   TouchableOpacity,
   View,
-  ViewStyle
 } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -22,11 +20,11 @@ interface Props {
   isPassword?: boolean;
   allowClear?: boolean;
   type?: KeyboardTypeOptions;
-  inputStyles?: StyleProp<ViewStyle>;
+  isVerification?: boolean;
+  maxLength?: number;
 }
 const InputComponent = (props: Props) => {
   const {
-    inputStyles,
     value,
     placeholder,
     onChange,
@@ -35,20 +33,38 @@ const InputComponent = (props: Props) => {
     isPassword,
     allowClear,
     type,
+    isVerification,
   } = props;
   const [isShowPass, setIsShowPass] = useState(isPassword ?? false);
 
   return (
-    <View style={[styles.inputContainer, inputStyles]}>
+    <View
+      style={[
+        styles.inputContainer,
+        {
+          height: isVerification ? 55 : "auto",
+          width: isVerification ? 55 : "100%",
+        },
+      ]}
+    >
       {affix ?? affix}
       <TextInput
-        style={[globalStyles.text, styles.input]}
+        style={[
+          globalStyles.text,
+          styles.input,
+          {
+            paddingHorizontal: isVerification ? 8 : 14,
+            height: 55,
+            width: 55,
+          },
+        ]}
         value={value}
         placeholder={placeholder ?? ""}
         onChangeText={(val) => onChange(val)}
         secureTextEntry={isShowPass}
         placeholderTextColor={"#747688"}
         keyboardType={type ?? "default"}
+        maxLength={isVerification ? 1 : undefined}
       />
       {suffix ?? suffix}
 

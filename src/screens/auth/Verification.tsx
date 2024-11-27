@@ -24,7 +24,7 @@ const Verification = () => {
   const [values, setValues] = useState(initValues);
 
   const handleChangeValues = (key: string, val: string) => {
-    const data: any = { ...initValues };
+    const data: any = { ...values };
     data[`${key}`] = val;
 
     setValues(data);
@@ -36,6 +36,7 @@ const Verification = () => {
         <TextComponent text="Verification" title font={fontFamilies.bold} />
         <SpaceComponent height={20} />
         <TextComponent
+          styles={{ width: "60%" }}
           text="We’ve send you the verification code on +1 2620 0323 7631"
           font={fontFamilies.bold}
         />
@@ -46,44 +47,32 @@ const Verification = () => {
           }}
         >
           <InputComponent
-            inputStyles={{
-              height: 55,
-              width: 55,
-            }}
+            isVerification
             placeholder="-"
             type="numeric"
             value={values.number1}
             onChange={(val) => handleChangeValues("number1", val)}
           />
           <InputComponent
-            inputStyles={{
-              height: 55,
-              width: 55,
-            }}
+            isVerification
             placeholder="-"
             type="numeric"
-            value={values.number1}
-            onChange={(val) => handleChangeValues("number1", val)}
+            value={values.number2}
+            onChange={(val) => handleChangeValues("number2", val)}
           />
           <InputComponent
-            inputStyles={{
-              height: 55,
-              width: 55,
-            }}
+            isVerification
             placeholder="-"
             type="numeric"
-            value={values.number1}
-            onChange={(val) => handleChangeValues("number1", val)}
+            value={values.number3}
+            onChange={(val) => handleChangeValues("number3", val)}
           />
           <InputComponent
-            inputStyles={{
-              height: 55,
-              width: 55,
-            }}
+            isVerification
             placeholder="-"
             type="numeric"
-            value={values.number1}
-            onChange={(val) => handleChangeValues("number1", val)}
+            value={values.number4}
+            onChange={(val) => handleChangeValues("number4", val)}
           />
         </RowComponent>
         <SectionComponent styles={{ alignItems: "center" }}>
@@ -93,7 +82,7 @@ const Verification = () => {
             styles={{ marginBottom: 0 }}
             icon={<Image source={arrowRight} height={20} />}
             iconFlex="right"
-            onPress={() => alert("verification")}
+            onPress={() => alert(JSON.stringify(values))}
           />
         </SectionComponent>
         <RowComponent styles={{ justifyContent: "center" }}>
