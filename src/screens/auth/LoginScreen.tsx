@@ -1,6 +1,7 @@
-import React, { ReactNode, useState } from "react";
-import { View, Text, Image, Switch } from "react-native";
-import { globalStyles } from "../../styles/gloabalStyles";
+import { Lock, Sms } from "iconsax-react-native";
+import React, { useState } from "react";
+import { Image, Switch } from "react-native";
+import TextLogo from "../../assets/images/text-logo.png";
 import {
   ButtonComponent,
   ContainerComponent,
@@ -10,18 +11,18 @@ import {
   SpaceComponent,
   TextComponent,
 } from "../../components";
-import { Lock, Sms } from "iconsax-react-native";
 import { appColor } from "../../constants/appColor";
-import TextLogo from "../../assets/images/text-logo.png";
-import { fontFamilies } from "../../constants/fontFamilies";
+import { SocialLogin } from "./components";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRemember, setIsRemember] = useState(true);
+  const navigation: NavigationProp<RootStackParamList> = useNavigation();
 
   return (
-    <ContainerComponent isImageBackground>
+    <ContainerComponent isImageBackground isScroll>
       <SectionComponent
         styles={{
           justifyContent: "center",
@@ -69,7 +70,24 @@ const LoginScreen = () => {
             />
             <TextComponent text="Remember me!" color={appColor.text} />
           </RowComponent>
-          <ButtonComponent text="Forgot Password?" type="link"/>
+          <ButtonComponent text="Forgot Password?" type="link" />
+        </RowComponent>
+      </SectionComponent>
+      <SpaceComponent height={16} />
+      <SectionComponent>
+        <ButtonComponent type="primary" text="SIGN IN" />
+      </SectionComponent>
+
+      <SocialLogin />
+
+      <SectionComponent>
+        <RowComponent justify="center">
+          <TextComponent text="Don't have an account? " />
+          <ButtonComponent
+            text="Sign up"
+            type="link"
+            onPress={() => navigation.navigate("SignupScreen")}
+          />
         </RowComponent>
       </SectionComponent>
     </ContainerComponent>
