@@ -1,15 +1,14 @@
 import { ReactNode } from "react";
 import {
-  Button,
   StyleProp,
   TextStyle,
   TouchableOpacity,
-  ViewStyle,
+  ViewStyle
 } from "react-native";
-import TextComponent from "./TextComponent";
-import { globalStyles } from "../styles/gloabalStyles";
 import { appColor } from "../constants/appColor";
 import { fontFamilies } from "../constants/fontFamilies";
+import { globalStyles } from "../styles/gloabalStyles";
+import TextComponent from "./TextComponent";
 
 interface Props {
   icon?: ReactNode;
@@ -46,12 +45,13 @@ const ButtonComponent = (props: Props) => {
         {
           backgroundColor: color ?? appColor.primary,
           marginBottom: 20,
-          width: '80%'
+          width: "90%",
+          justifyContent: "center",
         },
         styles,
       ]}
     >
-      {icon && icon}
+      {icon && iconFlex === "left" && icon}
       <TextComponent
         text={text}
         color={textColor ?? appColor.white}
@@ -60,6 +60,7 @@ const ButtonComponent = (props: Props) => {
           {
             margin: icon ? 12 : 0,
             fontSize: 16,
+            textAlign: 'center'
           },
         ]}
         flex={icon && iconFlex === "right" ? 1 : 0}

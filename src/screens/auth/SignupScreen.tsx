@@ -1,7 +1,8 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Lock, Sms, User } from "iconsax-react-native";
 import React, { useState } from "react";
-import { Image, Switch } from "react-native";
-import TextLogo from "../../assets/images/text-logo.png";
+import { Image } from "react-native";
+import arrownRight from "../../assets/images/arrowRight.png";
 import {
   ButtonComponent,
   ContainerComponent,
@@ -13,7 +14,6 @@ import {
 } from "../../components";
 import { appColor } from "../../constants/appColor";
 import { SocialLogin } from "./components";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 const initValue = {
   username: "",
@@ -72,7 +72,9 @@ const SignupScreen = () => {
 
       <SpaceComponent height={16} />
       <SectionComponent styles={{ alignItems: "center" }}>
-        <ButtonComponent type="primary" text="SIGN UP" />
+        <ButtonComponent type="primary" text="SIGN UP" 
+          iconFlex="right"
+          icon={<Image source={arrownRight} height={20} />}/>
       </SectionComponent>
 
       <SocialLogin />

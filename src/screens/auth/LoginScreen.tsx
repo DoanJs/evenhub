@@ -14,6 +14,7 @@ import {
 import { appColor } from "../../constants/appColor";
 import { SocialLogin } from "./components";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import arrownRight from "../../assets/images/arrowRight.png";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -79,7 +80,12 @@ const LoginScreen = () => {
       </SectionComponent>
       <SpaceComponent height={16} />
       <SectionComponent styles={{ alignItems: "center" }}>
-        <ButtonComponent type="primary" text="SIGN IN" />
+        <ButtonComponent
+          type="primary"
+          text="SIGN IN"
+          iconFlex="right"
+          icon={<Image source={arrownRight} height={20} />}
+        />
       </SectionComponent>
 
       <SocialLogin />
